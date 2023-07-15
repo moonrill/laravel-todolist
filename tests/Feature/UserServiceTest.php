@@ -23,5 +23,18 @@ class UserServiceTest extends TestCase
         self::assertTrue(true);
     }
 
+    public function testLoginSuccess()
+    {
+        self::assertTrue($this->userService->login('noir', 'rahasia'));
+    }
 
+    public function testLoginUserNotFound()
+    {
+        self::assertFalse($this->userService->login('noah', '123'));
+    }
+
+    public function testLoginWrongPassword()
+    {
+        self::assertFalse($this->userService->login('noir', '123'));
+    }
 }
