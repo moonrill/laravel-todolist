@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\OnlyGuestMiddleware;
+use App\Http\Middleware\OnlyMemberMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,5 @@ Route::controller(UserController::class)->group(function () {
         Route::get('/login', 'login');
         Route::post('/login', 'doLogin');
     });
-    Route::post('/logout', 'doLogout');
+    Route::post('/logout', 'doLogout')->middleware(OnlyMemberMiddleware::class);
 });
