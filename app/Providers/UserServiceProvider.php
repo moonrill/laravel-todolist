@@ -2,16 +2,13 @@
 
 namespace App\Providers;
 
+use App\Services\Impl\UserServiceImpl;
+use App\Services\UserService;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
-use App\Services\impl\UserServiceImpl;
-use App\Services\UserService;
 
 class UserServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    public array $singletons = [
-        UserService::class => UserServiceImpl::class
-    ];
 
     public function provides(): array
     {
@@ -20,16 +17,20 @@ class UserServiceProvider extends ServiceProvider implements DeferrableProvider
 
     /**
      * Register services.
+     *
+     * @return void
      */
-    public function register(): void
+    public function register()
     {
         //
     }
 
     /**
      * Bootstrap services.
+     *
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
         //
     }
